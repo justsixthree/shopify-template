@@ -1,70 +1,19 @@
 <div class="product__slider">
-    <div class="slideshow-container">
+    <div class="slider__container">
         {% for image in product.images %}
-        <div class="mySlides fade">
-            <a href="{{ product.url }}"><img src="{{ image | img_url: '500x' }}" alt="{{ image.alt | escape }}" /></a>
+        <div class="fade product__slides">
+            <a href="{{ product.url }}"><img class="product__image" src="{{ image | img_url: '500x' }}" alt="{{ image.alt | escape }}" /></a>
         </div>
         {% endfor %}
     </div>
 </div>
 <style>
-    .product__slider {
-        display: flex;
-        flex-wrap: wrap;
+    
+    
     }
-    .mySlides {
-        display: none
-    }
-    .slideshow-container {
-        position: relative;
-        width: 100%;
-    }
-     .slideshow-container img {
-        width: 100%;
-    }
-    .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
+    
 
-    @-webkit-keyframes fade {
-        from {
-            opacity: .4
-        }
-
-        to {
-            opacity: 1
-        }
-    }
-
-    @keyframes fade {
-        from {
-            opacity: .4
-        }
-
-        to {
-            opacity: 1
-        }
-    }
-
-    /* On smaller screens, decrease text size */
-    @media only screen and (max-width: 767px) {
-        .product__sliderNav {
-            width: 100%;
-            order: 2;
-        }
-    }
-
-    @media only screen and (max-width: 300px) {
-
-        .prev,
-        .next,
-        .text {
-            font-size: 11px
-        }
-    }
+    
 </style>
 
 <script>
@@ -81,7 +30,7 @@
 
     function showSlides(n) {
         var i;
-        var slides = document.getElementsByClassName("mySlides");
+        var slides = document.getElementsByClassName("product__slides");
         var dots = document.getElementsByClassName("dot");
         if (n > slides.length) { slideIndex = 1 }
         if (n < 1) { slideIndex = slides.length }
