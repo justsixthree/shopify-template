@@ -1,0 +1,42 @@
+.customer {
+    background-color: #fff;
+    @include shadow();
+    padding: 60px;
+    border-radius: 40px 0 40px 0;
+}
+.logout {
+    margin-top: 15px;
+}
+
+.customer {
+    background-color: #fff;
+    @include shadow();
+    padding: 60px;
+    border-radius: 40px 0 40px 0;
+}
+.action_link a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.action_link img {
+    width: 18px;
+    margin-right: 8px;
+}
+.h-divider {
+    margin: 25px 0 35px;
+    width: 100%;
+    flex: 0 0 100%;
+    height: 1px;
+    background-color: #707070;
+}
+.customer__address {
+    background-color: #fff;
+    @include shadow();
+    padding: 60px;
+    border-radius: 40px 0 40px 0;
+    margin-top: 40px;
+}
+.address__view {
+    margin-top: 15px;
+}

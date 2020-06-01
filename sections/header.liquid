@@ -1,0 +1,78 @@
+<div class="announcement">
+    <span class="announcement__text">Enjoy Complimentary Shipping and Returns On All U.S. Orders</span>
+</div>
+<header class="header header-light">
+    
+    <div class="header__inner">
+
+        <div class="header__logo">
+            <a href="{{ routes.root_url }}">
+                <img src="{{ 'logo.svg' | asset_url }}" class="logo">
+            </a>
+        </div>
+
+        <!--Navbar Starts-->
+        <nav class="navbar">
+            <ul class="navbar__list">
+                {% for link in linklists.header-menu.links %}
+                    <li class="navbar__item">
+                        <a class="navbar__link {% if link.active %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <!--Navbar Ends-->
+
+        <div class="header__right">
+            <ul class="header__rightList">
+                <!-- <li class="header__account header__item">
+                    <a href="{% if customer %}{{ routes.account_url }}{% else %}/pages/account{% endif %}">
+                        <img src="{{ 'user.svg' | asset_url }}" class="header__icon">
+                    </a>
+                </li>     -->
+                <li class="notification header__item dropdown">
+                    <a href="/search" class="dropdown__toggler">
+                        <img src="{{ 'search.svg' | asset_url }}" class="header__icon">
+                    </a>
+                </li>
+                <li class="header__cart_link header__item">
+                    <a href="{{ routes.cart_url }}">
+                        <img src="{{ 'shopping-bag.svg' | asset_url }}" class="header__icon">
+                    </a>
+                </li>
+                <li class="header__account header__item">{% include 'humburger' %}</li>
+            </ul>
+            
+            
+            
+            
+
+        </div>
+
+
+    </div>
+    
+</header>
+<style>
+    #shopify-section-header{
+        position: relative;
+        z-index: 999;
+    }
+</style>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+     {
+        "type": "header",
+        "content": "Site Logo"
+     },
+      {
+        "type": "image_picker",
+        "id": "Logo",
+        "label": "Select Image"
+      }
+    ]
+  }
+{% endschema %}

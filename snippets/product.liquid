@@ -1,0 +1,21 @@
+<div class="product">
+
+    <!--Product Left-->
+    <div class="product__left">
+        {% include 'product-slides' %}
+    </div>
+
+    <!--Product right-->
+    <div class="product__right">
+        {% include 'product__details' %}
+    </div>
+
+    <div class="product__sliderNav">
+        {% for image in product.images %}
+        {% assign count = 1  %}
+        <span class="dot product__thumb" onclick="currentSlide({{ forloop.index }})">
+            <img data-src="{{ image | img_url: '300x' }}" alt="{{ image.alt | escape }}" class="image" /></span>
+        {% endfor %}
+    </div>
+
+</div>

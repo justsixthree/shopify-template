@@ -1,0 +1,35 @@
+/*Faq*/
+.faq__header {
+    margin-bottom: 50px;
+}
+
+.faq__list {
+    list-style: none;
+}
+.faq__item {
+    margin-bottom: 40px;
+}
+.faq__question {
+    font-size: 1.15em;
+    padding-right: 40px;
+    position: relative;
+    background-image: url(down-arrow.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    cursor: pointer;
+}
+.active .faq__question {
+    background-image: url(minus.png);
+}
+
+.faq__answer {
+    margin-top: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease 0s;
+}
+.active .faq__answer {
+    margin-top: 12px;
+    max-height: 1000px;
+}

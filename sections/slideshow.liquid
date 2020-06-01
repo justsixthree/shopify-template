@@ -1,0 +1,30 @@
+{% assign product = all_products['scene-creator'] %}
+<div class="hero hero-v2">
+    <div class="hero__inner">
+        <div class="hero__image">
+          <img data-src="{{ 'banner.jpg' | asset_url }}" class="image"/> 
+        </div>
+        <div class="hero__content">
+            <div>
+              <h1 class="hero__title">PERFECT HOLDER</h1>
+              <p class="hero__descritpion">360 Rotating Flexible <br>Long Arm Tablet/Phone Holder</p>
+            </div>
+        </div>
+    </div>    
+</div>
+{% schema %}
+  {
+    "name": "Hero Section",
+    "settings": [
+     {
+        "type": "header",
+        "content": "Hero Section Image"
+     },
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Select Image"
+      }
+    ]
+  }
+{% endschema %}

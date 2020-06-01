@@ -1,0 +1,12 @@
+<div class="product__details">
+    <h2 class="product__title">{{ product.title }}</h2>
+    <h4 class="section__subtitle">Warning: Sale Ends In...</h4>
+    {% include 'timer' %}
+
+    {% form "product", product %}
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <input id="" type="submit" value="Add to cart" class="btn btn--dark" />
+    {% endform %}
+    
+    <div class="product__info">{{ product.description | truncatewords: 120 }}</div>
+</div>

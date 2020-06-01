@@ -1,0 +1,87 @@
+<section class="section">
+    <div class="container">
+        <div class="section__content">
+            <div class="account">
+                <div class="account__left">
+                    <div class="account__image">
+                        <img data-src="{{ 'account.png' | asset_url }}" class="image">
+
+                        <div class="account__image-text">
+                            <h2 class="account__title">COMFORTABLE</h2>
+                            <p class="account__description">There, it is as if you had just rang our door, we will be
+                                glad to have you back and continue more of your purchase but you have to login with you
+                                correct details.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="account__right">
+                    <div class="account__option">
+                        <div class="customer">
+
+
+                            <div class="customer__form">
+                                <h2 class="account__title">Login</h2>
+                                <p class="account__description">We are glad you are here! Fill in your details.</p>
+
+                                {%- form 'customer_login' -%}
+                                <p>{{ form.errors | default_errors }}</p>
+
+                                <div>
+                                    <input class="form__control" placeholder="Type Your Email" type="email"
+                                        name="customer[email]" id="customerEmail" autocorrect="off" autocapitalize="off"
+                                        autocomplete="email">
+                                </div>
+                                <div>
+                                    <input class="form__control" placeholder="Type Your Passowrd" type="password"
+                                        name="customer[password]" id="customerPassword">
+                                </div>
+                                <p><input type="submit" value="Sign In" class="btn btn--dark btn--block" /></p>
+                                <div class="text-center">
+                                    <p><a href="#recover" class="recover">For the forgotten password specialists, this is it.</a></p>
+                                    <!-- <p>{{ 'Create Account' | customer_register_link }}</p> -->
+                                </div>
+                                {%- endform -%}
+
+
+
+                            </div>
+                        </div>
+                        <!-- customer ends-->
+
+                    </div>
+                    <div class="account__option">
+                        <!-- If accounts are set as optional, the following will be shown as an option when coming from checkout, not on the default /login page. -->
+                        {%- if shop.checkout.guest_login -%}
+                        {%- form 'guest_login' -%}
+                        <input type="submit" value="Continue as Guest" />
+                        {%- endform -%}
+                        {%- endif -%}
+
+                        <!-- Use JavaScript to show/hide this form -->
+                        {%- form 'recover_customer_password' -%}
+
+                        {%- if form.posted_successfully? -%}
+                        <div role="status">
+                            <p>We've sent you an email with a link to update your password.</p>
+                        </div>
+                        {%- endif -%}
+
+                        <div id="recover" {% unless form.errors %} style="display: none;" {% endunless %}>
+                            <h2 class="account__title">Forgot Password?</h2>
+                            <p class="account__description">We will send you an email to reset your password.</p>
+                            <p>{{ form.errors | default_errors }}</p>
+                            <input type="email" name="email" id="customerEmail" autocorrect="off" class="form__control" autocapitalize="off" utocomplete="email">
+                            <p><input type="submit" value="Submit" class="btn btn--block btn--dark"></p>
+                            <div class="text-center">
+                                <p><a href="#recover" class="recover">Cancel</a></p>
+                            </div>
+                            <input type="text" style="opacity: 0;" class="form__control" autocapitalize="off" utocomplete="email">
+                        </div>
+
+                        {%- endform -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

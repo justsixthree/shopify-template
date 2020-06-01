@@ -1,0 +1,61 @@
+
+//Buttons
+$btnColors: dark;
+
+@mixin button-bg($dark: true) {
+    @if $dark {
+        background: $primary;
+        border: 1px solid $primary;
+        color: $secondary;
+    } @else {
+        background: $secondary;
+        border: 1px solid $secondary;
+        color: $primary;
+    }
+    &:hover {
+        background: darken($primary, $hoverAmount);
+        border: 1px solid darken($primary, $hoverAmount);
+        transition: all 0.3s ease;
+        color: $secondary;
+    }
+    &:active {
+        background: darken($primary, $activeAmount);
+        border: 1px solid darken($primary, $activeAmount);
+        color: $secondary;
+    }
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px 60px;
+    line-height: 1.2;
+    border: 0;
+    border-radius: 40px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    @media (max-width: 991px) {
+        padding: 20px 30px;
+        line-height: 1.2;
+        font-size: 1em;
+    }
+}
+.btn--sm {
+    padding: 16px 25px;
+    font-size: 0.75em;
+}
+.btn--block {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@each $btnColor in $btnColors {
+    .btn--#{$btnColor} {
+        @include button-bg(true);
+    }
+}
+//Buttons

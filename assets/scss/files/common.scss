@@ -1,0 +1,46 @@
+
+/*Custom Checkbox*/
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+.checkbox__group {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+}
+.checkbox input,
+.checkbox__input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0;
+}
+.checkbox__tick {
+    display: block;
+    height: 24px;
+    background-image: url(checkbox-uncheck.png);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.checkbox__input:checked + .checkbox__tick {
+    background-image: url(checkbox-check.png);
+}
+
+/*Challenge  Page*/
+.shopify-challenge__container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+.shopify-challenge__container .shopify-challenge__button {
+    background: #000;
+    color: #fff;
+}
+/*//Challenge  Page**/

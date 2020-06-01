@@ -1,0 +1,22 @@
+<div class="quantity">
+    <div class="quantity__button decrease-{{forloop.index}}" id="decrease" value="Decrease Value">{{ 'minus.png' | asset_url | img_tag }}</div>
+    <input type="number" name="updates[]" id="updates_{{ item.id }}" class="quantity__input quantity-{{forloop.index}}" value="{{ item.quantity }}" />
+    <div class="quantity__button increase-{{forloop.index}}" id="increase" value="Increase Value">{{ 'plus.png' | asset_url | img_tag }}</div>
+  </div>
+
+<script>
+    document.querySelector('.increase-{{forloop.index}}').addEventListener('click', function(){
+        var value = parseInt(document.querySelector('.quantity-{{forloop.index}}').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.querySelector('.quantity-{{forloop.index}}').value = value;
+    });
+   
+    document.querySelector('.decrease-{{forloop.index}}').addEventListener('click', function(){
+        var value = parseInt(document.querySelector('.quantity-{{forloop.index}}').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value < 1 ? value = 1 : '';
+        value--;
+        document.querySelector('.quantity-{{forloop.index}}').value = value;
+    });
+</script>

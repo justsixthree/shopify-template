@@ -1,0 +1,70 @@
+<section class="section">
+    <div class="container">
+        <div class="section__content">
+            <div class="account">
+                <div class="account__left">
+                    <div class="account__image">
+                        <img data-src="{{ 'account.png' | asset_url }}" class="image">
+                        <div class="account__image-text">
+                            <h2 class="account__title">WELCOME !</h2>
+                            <p class="account__description">From this account, you can follow your orders, sponsor your friends and make your returns at ease. Frankly it's okay, it's not a tanned either, only few details are needed to complete this section.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="account__right">
+                    <div class="account__option width--full">
+                        <h2 class="account__title">Register</h2>
+                        <p class="account__description">It goes so fast between us.</p>
+                        <div class="customer">
+                            <div class="customer__form">
+                                {% form 'create_customer', class: "form" %}
+                                {{ form.errors | default_errors }}
+                                    <div class="form__col">
+                                        <input class="form__control" placeholder="First Name" type="text" name="customer[firstname]" id="firstName" autocorrect="off" autocapitalize="off">
+                                    </div>    
+
+                                    <div class="form__col">
+                                        <input class="form__control" placeholder="Last Name" type="text" name="customer[Last]" id="lastName" autocorrect="off" autocapitalize="off" autocomplete="email">
+                                    </div>
+                                        
+                                    <div class="form__col">
+                                        <select class="form__control">
+                                            <option value="">Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form__col">
+                                        <input class="form__control" placeholder="Email" type="email" name="customer[email]" id="customerEmail" autocorrect="off" autocapitalize="off" autocomplete="email">
+                                    </div>
+                                    <div class="form__col">
+                                        <input class="form__control" placeholder="Password" type="password" name="customer[password]" id="customerPassword">
+                                    </div>
+                                    <div class="form__col">
+                                        <input class="form__control" placeholder="Enter Your Birthday" type="date" name="customer[birthday]" id="customerBirthday">
+                                    </div>
+                                    <div class="form__col">
+                                        <div class="checkbox" style="margin: 10px 0;">
+                                            <span class="checkbox__group">
+                                                <input class="checkbox__input" type="checkbox" id="newsletterCheck"/>
+                                                <span class="checkbox__tick"></span>
+                                            </span>
+                                            <label for="newsletterCheck" class="checkbox__label">Subscribe me to newsletter!</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form__col">
+                                        <input type="submit" value="Register" class="btn btn--dark btn--block"/>
+                                    </div>
+                                {%- endform -%}
+
+                            </div>
+                        </div>
+                        <!-- customer ends-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+<div class="newsletter">
+    <div class="container">
+        {% form 'customer', class : "newsletter__form" %}
+        <div class="newsletter__group">
+            <input class="newsletter__input" name="customer[email]" placeholder="Type Your Email Here" type="text">
+            <button type="submit" class="btn btn--dark">SUBSCRIBE</button>
+        </div>
+        {% endform %}
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+
+            <div class="footer__column">
+                <h3 class="footer__title">FOR US</h3>
+                <!--Navbar Starts-->
+                <nav class="navbar navbar--row">
+                    <ul class="navbar__list">
+                        {% for link in linklists.main-menu.links %}
+                        <li class="navbar__item">
+                            <a class="navbar__link" href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <!--Navbar Ends-->
+            </div>
+
+            <div class="footer__column">
+                <h3 class="footer__title">CONVENIENT</h3>
+                <!--Navbar Starts-->
+                <nav class="navbar navbar--row">
+
+                    <ul class="navbar__list">
+                        {% for link in linklists.footer.links %}
+                        <li class="navbar__item">
+                            <a class="navbar__link" href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <!--Navbar Ends-->
+            </div>
+
+            <div class="footer__column">
+                <h3 class="footer__title">FOLLOW US</h3>
+                <!--Navbar Starts-->
+                <div class="social">
+                    <ul class="social__list">
+                        <li class="social__item">
+                            <a class="social__link" href=""><img data-src="{{ 'facebook.png' | asset_url }}"
+                                    class="image" /></a>
+                        </li>
+                        <li class="social__item">
+                            <a class="social__link" href=""><img data-src="{{ 'linkedin.png' | asset_url }}"
+                                    class="image" /></a>
+                        </li>
+                        <li class="social__item">
+                            <a class="social__link" href=""><img data-src="{{ 'twitter.png' | asset_url }}"
+                                    class="image" /></a>
+                        </li>
+                        <li class="social__item">
+                            <a class="social__link" href=""><img data-src="{{ 'instagram.png' | asset_url }}"
+                                    class="image" /></a>
+                        </li>
+                    </ul>
+                    </nav>
+                    <!--Navbar Ends-->
+                </div>
+                <div class="payment">
+                    {% include 'payment-icons' %}
+
+                </div>
+            </div>
+        </div>
+</footer>
+
+{% schema %}
+{
+"name": "Footer",
+"settings": [
+{
+"type": "header",
+"content": "Footer Site Logo"
+},
+{
+"type": "image_picker",
+"id": "Logo",
+"label": "Select Footer Logo"
+}
+]
+}
+{% endschema %}

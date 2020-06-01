@@ -1,0 +1,51 @@
+
+.contact{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.contact__form{
+    width: 50%;
+    flex : 0 0 50%;
+    padding-right: 50px
+}
+.contact__form form{
+    max-width: 600px;
+}
+.address{
+    margin: 20px 0;
+}
+.address__item{
+    padding: 10px 0;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+}
+.address__item img{
+    width: 24px;
+    margin-right: 10px;
+}
+@media(max-width: 767px){
+    .contactPage{
+        padding: 30px;
+    }
+    .contact__address {
+        margin-top: 30px;
+    }   
+    .contact__form {
+        width: 100%;
+        flex: 0 0 100%;
+        padding-right: 0;
+    }
+    .faq {
+        padding-top: 30px;
+        margin-top: 40px;
+        border-top: 1px solid #ccc;
+    }
+    .faq__item {
+        margin-bottom: 30px;
+    }
+    .faq__question{
+        font-size: 1em ;
+    }
+}

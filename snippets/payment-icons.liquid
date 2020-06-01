@@ -1,0 +1,25 @@
+<style>
+    .visuallyhidden {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      white-space: nowrap;
+    }
+    </style>
+    
+    {%- unless shop.enabled_payment_types == empty -%}
+      <span class="visuallyhidden">Supported payment methods</span>
+    
+      <ul class="payment__list">
+        {%- for type in shop.enabled_payment_types -%}
+        <li class="payment__icon">
+            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endunless -%}

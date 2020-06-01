@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container">
+
+    <form action="/search" method="get" role="search" class="search__form">
+      <h2 class="search__title title text--bolder">Search Here</h2>
+      <input name="q" type="search" class="form__control" id="search-field" placeholder="Search store..."
+        value="{{ search.terms | escape }}" />
+      <input type="submit" value="Search" class="btn btn--dark btn--block" />
+    </form>
+    <div class="section__content">
+      {% if search.performed %}
+      {% paginate search.results by 10 %}
+      {% if search.results_count == 0 %}
+      Your search for "{{ search.terms }}" did not yield any results.
+      {% else %}
+      <ol class="result">
+        {% for item in search.results %}
+        <li class="result__item">
+          <div class="result__content">
+            {% if item.vendor %}
+            <a href="{{ item.url }}" title="{{ item.title | escape }}" class="result__image">
+              {{ item | img_url: 'large' | img_tag: item.featured_image.alt }}
+            </a>
+            {% endif %}
+            <h3 class="result__title">{{ item.title | link_to: item.url }}</h3>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+      {{ paginate | default_pagination }}
+      {% endif %}
+
+      {% endpaginate %}
+
+      {% endif %}
+    </div>
+  </div>
+</section>

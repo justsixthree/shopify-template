@@ -1,0 +1,6 @@
+development:
+  password: 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
+  theme_id: "82998231122"
+  store: socialproo.myshopify.com
+  ignore_files:
+  - config/settings_data.json

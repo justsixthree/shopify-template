@@ -1,0 +1,13 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/0.4.3/rivets-cart.min.js"></script>
+<script type="text/javascript">
+  jQuery(function() {
+      CartJS.init({{ cart | json }});
+  });
+  $(document).on('cart.requestComplete', function(event, cart) {
+        $('#counter').html(cart.item_count);
+        $('item__color').html(cart.options_value)
+        console.log(CartJS["cart"].items);
+        // CartJS["cart"].items[0].options_with_values[0].name
+
+  });
+</script>

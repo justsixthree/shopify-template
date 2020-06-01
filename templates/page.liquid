@@ -1,0 +1,5 @@
+{% assign collection = collections['frontpage'] %}
+<h3>{{ collection.title }}</h3>
+{% for collection in collections['frontpage'] %}
+  {{ collection.title }}
+{% endfor %}

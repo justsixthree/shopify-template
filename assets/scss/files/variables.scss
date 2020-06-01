@@ -1,0 +1,289 @@
+//Varibles
+$titleFont: "Segoe";
+$textFont: "Segoe";
+$primary: #000;
+$secondary: #ffffff;
+$light: #f8f8f8;
+
+$hoverAmount: 5;
+$activeAmount: 25;
+$hoverColor: darken($primary, $hoverAmount);
+$activeColor: darken($primary, $activeAmount);
+$containerWidth: 1440px;
+$containerPadding: 20px;
+$columnGap: 15px;
+
+$sectionPad: 100px 0;
+$sectionMobilePad: 60px 0;
+$h1: 3em;
+$h2: 2.75em;
+$h3: 2.5em;
+$h4: 1.5em;
+$h5: 1.25em;
+$h6: 1em;
+$p: 1.1em;
+$small: 0.75em;
+
+///mixins
+@mixin title() {
+    font-size: 36px;
+    font-weight: 600;
+    color: $primary;
+}
+@mixin shadow() {
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.16);
+}
+@mixin hover($e) {
+    &:focus,
+    &:active,
+    &:hover {
+        color: $e;
+    }
+}
+
+@mixin middleCenter($align, $justify, $textcenter: false) {
+    display: flex;
+    -ms-display: flex;
+    align-items: $align;
+    -ms-align-items: $align;
+    justify-content: $justify;
+    -ms-justify-content: $justify;
+    @if $textcenter {
+        text-align: center;
+    }
+}
+
+@mixin container() {
+    max-width: $containerWidth;
+    padding: 0 $containerPadding;
+    margin: 0 auto;
+}
+
+
+
+//Common styles
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: $textFont;
+    font-size: 16px;
+    margin: 0 auto;
+    color: #333333;
+    background-color: $light;
+}
+a {
+    color: $primary;
+    @include hover($hoverColor);
+    text-decoration: none;
+}
+:focus{
+    outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $titleFont;
+    font-weight: 600;
+    color: $primary;
+}
+
+h1,
+.h1 {
+    font-size: $h1;
+}
+h2,
+.h2 {
+    font-size: $h2;
+}
+h3,
+.h3 {
+    font-size: $h3;
+}
+h4,
+.h4 {
+    font-size: $h4;
+}
+h5,
+.h5 {
+    font-size: $h5;
+}
+h6,
+.h6 {
+    font-size: $h6;
+}
+p {
+    font-size: $p;
+    margin-bottom: 15px;
+}
+ul,
+ol {
+    list-style-type: none;
+}
+small,
+.small {
+    font-size: $small;
+}
+.container {
+    width: 100%;
+    max-width: $containerWidth;
+    margin: 0 auto;
+    padding: 0 $containerPadding;
+    
+}
+
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.width--full {
+    width: 100% !important;
+}
+.bg--white {
+    background-color: #fff !important;
+}
+.title {
+    @include title();
+}
+@media (max-width: 767px) {
+    .title br {
+        display: none;
+    }
+    .title {
+        font-size: 28px;
+    }
+}
+
+.text--bolder {
+    font-weight: 900 !important;
+}
+.description--bold {
+    font-weight: 500;
+    font-size: 18px;
+    color: $primary;
+}
+.description--auto {
+    max-width: 900px;
+    margin: 10px auto 15px;
+}
+
+
+/*Lazy Loading Settings*/
+.image {
+    opacity: 0;
+    min-height: 400px;
+}
+.image:not(.initial) {
+    transition: opacity 1s;
+}
+.image.initial,
+.image.loaded,
+.image.error {
+    opacity: 1;
+    min-height: 0;
+}
+.image:not([src]) {
+    visibility: hidden;
+}
+/*Lazy Loading Settings*/
+/*Dropdown starts*/
+.dropdown {
+    position: relative;
+}
+.dropdown__content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 40px 0 40px 0;
+    @include shadow();
+    padding: 30px;
+    width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    .active & {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.notificaiton__list {
+    list-style: none;
+}
+.notification__item {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+}
+.notification__thumb {
+    width: 60px;
+    margin-right: 10px;
+}
+.notification__title {
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+.notification__info {
+    font-size: 14px;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .dropdown__content {
+        left: calc(100% - 235px);
+    }
+}
+
+/*Dropdown ends*/
+
+/*Sections*/
+.section {
+    padding: $sectionPad;
+}
+.section--sm {
+    padding: $sectionMobilePad;
+}
+.section__content {
+    padding-top: 50px;
+}
+.section__title {
+    font-size: 36px;
+    font-weight: 600;
+    color: $primary;
+    margin-bottom: 15px;
+}
+.section__subtitle {
+    font-size: 24px;
+    font-weight: 900;
+    color: #707070;
+}
+.section__description {
+    font-size: $p;
+}
+
+@media (max-width: 1199px) {
+    .section {
+        padding: $sectionMobilePad;
+    }
+}
+/*Sections Ends*/
+
+
+/* Card Ends*/
+
+

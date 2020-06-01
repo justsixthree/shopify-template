@@ -1,0 +1,51 @@
+<section class="section bg--white">
+
+    <div class="container">
+        <div class="section__header text-center">
+            <h2 class="section__title text--bolder">Contact us</h2>
+            <p class="section__description description--bold">Have any questions or need to get more information about the product? Either way, you're in the right spot.</p>
+
+        </div>
+
+        <div class="section__content">
+            <div class="contact">
+                <div class="contact__form">
+                    {% form 'contact', id: 'enquiryFrom', class: "form" %}
+                    {% include 'form-status', form: form, form_id: formId %}
+                    {{ form.errors | default_errors }}
+                    <input type="hidden" value="Need an Enquiry" name="contact[purpose]">
+                    <div class="form__col">
+                        <input class="form__control" placeholder="Enter your name" type="text" name="contact[name]"
+                            id="customerPassword">
+                    </div>
+                    <div class="form__col">
+                        <input class="form__control" placeholder="Enter your email address" type="email"
+                            name="contact[email]" id="customerEmail" autocorrect="off" autocapitalize="off"
+                            autocomplete="email">
+                    </div>
+                    <div class="form__col form__col--100">
+                        <input class="form__control" placeholder="Type your phone number here ..." type="number"
+                            name="contact[phone]" id="customerEmail" >
+                    </div>
+                    <div class="form__col form__col--100">
+                        <textarea placeholder="Type your message …." name="contact[message]"
+                            class="form__control"></textarea>
+                    </div>
+                    <input type="submit" value="SUBMIT" class="btn btn--dark btn--block" />
+                    {% endform %}
+                </div>
+                <div class="contact__address">
+                    <p>If you want to directly reach out, you can check our contacts down below.</p>
+                    <address class="address">
+                        <div class="address__item"> 
+                            {{ 'phone.png' | asset_url | img_tag }} <a href="tel:+01 516351 6354">+01 516351 6354</a>
+                        </div>
+                        <div class="address__item"> 
+                            {{ 'mail.png' | asset_url | img_tag }} <a href="support@socialproo.com">support@socialproo.com</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

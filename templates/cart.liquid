@@ -1,0 +1,117 @@
+<section class="section bg--white">
+  <div class="container">
+    <div class="cart">
+      <h2 class="cart__title title text--bolder">Shopping cart</h2>
+      <p class="cart__description description--bolder">Your are just a few cent away from Free standard shipping.</p>
+      <div class="section__content">
+        {% if cart.item_count > 0 %}
+
+        <form action="/cart" method="post">
+
+          {% for item in cart.items %}
+          {% assign collection_url = item.product.collections.last.url %}
+          {% assign sizeT = item.product.options_by_name['Color'].value %}
+          {% if collection_url == '/collections/frontpage' or collection_url == blank %}
+          {% assign collection_url = '/collections/all' %}
+          {% endif %}
+          <!-- Cart Item starts -->
+          <div class="cart__item">
+
+            <div class="cart__image">
+              <a href="{{ collection_url }}{{ item.url }}">
+                <img src="{{ item | img_url: 'compact' }}" alt="{{ item.title | escape }}" />
+              </a>
+            </div>
+
+            <div class="cart__details">
+              <div class="cart__title">
+                <h4 class="text--bolder">
+                  <a href="{{ collection_url }}{{ item.url }}">{{ item.product.title }}</a>
+                  <br>
+                </h4>
+                <div class="cart__variants">
+                  {%- assign variant_options = 'template ' | split: ' ' -%}
+                  {%- if item.product.has_only_default_variant != true -%}
+                  {%- assign variant_options = item.options_with_values -%}
+                  {%- endif -%}
+                  {%- assign property_size = item.properties | size -%}
+
+                  <ul
+                    class="product-details{% if item.product.has_only_default_variant and property_size == 0 %} hide{% endif %}"
+                    data-cart-item-details aria-label="{{ 'cart.label.product_details' | t }}">
+                    {%- for option in variant_options -%}
+                    <li
+                      class="product-details__item product-details__item--variant-option{% if item.product.has_only_default_variant %} hide{% endif %}"
+                      data-cart-item-option><b>{{ option.name }}:</b> {{ option.value }}</li>
+                    {%- endfor -%}
+                    {%- assign properties = 'template ' | split: ' ' -%}
+                    {%- if property_size > 0 -%}
+                    {%- assign properties = item.properties -%}
+                    {%- endif -%}
+                  </ul>
+                </div>
+
+                {% include 'quantity' %}
+                <input type="submit" name="update" class="btn btn--dark btn--sm" value="Update cart" />
+              </div>
+
+              <div class="cart__price">
+                <div class="cart__prices">
+                  <h4 class="text--bolder">{{ item.price | money }}</h4>
+                  <h5>{{ item.compare_at_price | money }}</h5>
+                  <h5>{{ item.compare_at_price_max | money }}</h5>
+                </div>
+                <a class="cart__remove" href="/cart/change?line={{ forloop.index }}&quantity=0">Remove From cart
+                  {{ 'trash.png' | asset_url | img_tag}} </a>
+              </div>
+            </div>
+
+          </div>
+          <!-- Cart Item ends -->
+          {% endfor %}
+
+          <!-- Cart total Starts-->
+          <div class="cart__item cart__total">
+
+            <div class="total__left">
+              <!-- <div class="cart__note">
+                  <textarea name="note" class="form__control" placeholder="Special instructions for seller">{{ cart.note }}</textarea>
+                </div> -->
+              <h3 class="cart__subtotal">Subtotal : {{ cart.total_price | money }}</h3>
+            </div>
+            <div class="total__right">
+              <input type="submit" name="checkout" class="btn btn--dark btn--block" value="Check out" />
+              <!-- {% if additional_checkout_buttons %}
+                  {{ content_for_additional_checkout_buttons }}
+                {% endif %} -->
+              <a href="{{ continue_shopping_url }}">Continue shopping</a>
+            </div>
+          </div>
+          <!-- Cart total Starts-->
+          {% comment %}
+          For the checkout and update buttons to work, they need to use
+          a name attribute set to 'checkout' and 'update', respectively. That's case-sensitive.
+          {% endcomment %}
+          {% comment %}Paypal and Google checkout buttons{% endcomment %}
+
+          {% comment %}
+          For the special instructions to be submitted with order,
+          we need to use a name attribute set to 'note'.
+          {% endcomment %}
+        </form>
+        {% else %}
+        <div class="cart__item">
+          <div>
+            <h4>It appears that your cart is currently empty!</h4>
+            <br>
+            <a href="/collections/all" class="btn btn--dark">Continue Shopping</a>
+          </div>
+
+        </div>
+
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+@mixin hover($e) {
+    &:focus,&:active,&:hover{
+        color: $e;
+    }
+}
+
+@mixin middleCenter($align, $justify, $textcenter : false ){
+    display: flex;
+    -ms-display: flex;
+    align-items: $align;
+    -ms-align-items: $align;
+    justify-content: $justify;
+    -ms-justify-content: $justify;
+    @if $textcenter {
+        text-align: center;
+    }
+}
+
+@mixin container() {
+    max-width: $containerWidth;
+    padding: 0 $containerPadding;    
+    margin: 0 auto;
+}
