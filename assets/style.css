@@ -418,16 +418,16 @@ small,
 
 @media (max-width: 767px) {
   .newsletter {
-    padding: 25px 25px 50px; }
+    padding: 25px; }
   .newsletter__input {
-    margin-bottom: 15px; }
+    margin-bottom: 10px; }
   .newsletter__group {
     flex-direction: column; } }
 
 /*Newsletter*/
 .footer {
   background-color: #707070;
-  padding-top: 150px;
+  padding-top: 60px;
   padding-bottom: 60px; }
 
 .footer__inner {
@@ -509,8 +509,6 @@ small,
   padding: 0 15px; }
 
 .product__slider {
-  display: flex;
-  flex-wrap: wrap;
   position: relative; }
 
 .product__image {
