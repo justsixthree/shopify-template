@@ -2,17 +2,22 @@
 @import "files/mixins";
 @import "files/common";
 @import "files/buttons";
+
 @import "files/header";
-@import "files/benefits";
 @import "files/footer";
-@import "files/blog";
+
+@import "files/collection";
+@import "files/product";
 @import "files/cart";
+
+
 @import "files/contact";
 @import "files/customers";
 @import "files/search";
+@import "files/form";
+
+@import "files/blog";
 @import "files/testimonials";
 @import "files/faq";
-@import "files/form";
-@import "files/collection";
-@import "files/product";
+@import "files/benefits";
 @import "files/cards";

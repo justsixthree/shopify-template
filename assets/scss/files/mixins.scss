@@ -21,3 +21,37 @@
     padding: 0 $containerPadding;    
     margin: 0 auto;
 }
+///mixins
+@mixin title() {
+    font-size: 36px;
+    font-weight: 600;
+    color: $primary;
+}
+@mixin shadow() {
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.16);
+}
+@mixin hover($e) {
+    &:focus,
+    &:active,
+    &:hover {
+        color: $e;
+    }
+}
+
+@mixin middleCenter($align, $justify, $textcenter: false) {
+    display: flex;
+    -ms-display: flex;
+    align-items: $align;
+    -ms-align-items: $align;
+    justify-content: $justify;
+    -ms-justify-content: $justify;
+    @if $textcenter {
+        text-align: center;
+    }
+}
+
+@mixin container() {
+    max-width: $containerWidth;
+    padding: 0 $containerPadding;
+    margin: 0 auto;
+}
